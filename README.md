@@ -16,16 +16,25 @@ GWTM (Git WorkTree Manager) streamlines creating, switching, and managing Git wo
 
 ## Installation
 
-From PyPI (recommended):
+From source (recommended):
 ```bash
-pip install gwtm
+# Clone the repository
+git clone https://github.com/cameronehrlich/gwtm.git
+cd gwtm
+
+# Simple installation (creates a symlink in ~/bin or ~/.local/bin)
+./install.sh
+
+# Development installation (installs with pip in editable mode)
+./install.sh --dev
+
+# Global installation (installs with pip)
+./install.sh --global
 ```
 
-From source:
+For more installation options:
 ```bash
-git clone https://github.com/your-username/gwtm.git
-cd gwtm
-pip install -e .
+./install.sh --help
 ```
 
 ## Requirements

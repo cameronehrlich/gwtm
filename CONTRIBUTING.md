@@ -6,7 +6,7 @@ Thank you for your interest in contributing to the Git WorkTree Manager (GWTM) p
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/gwtm.git
+   git clone https://github.com/cameronehrlich/gwtm.git
    cd gwtm
    ```
 
@@ -23,9 +23,16 @@ Thank you for your interest in contributing to the Git WorkTree Manager (GWTM) p
 
 ## Running Tests
 
-To run basic tests:
+To run tests:
 ```bash
-python test.py
+# Run all comprehensive tests
+python tests.py
+
+# Run basic tests only
+python tests.py basic
+
+# Run full test suite
+python tests.py full
 ```
 
 ## Code Style

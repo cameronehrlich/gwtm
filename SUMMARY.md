@@ -67,7 +67,7 @@ gwtm/
 
 ```bash
 # Install from source
-git clone https://github.com/your-username/gwtm.git
+git clone https://github.com/cameronehrlich/gwtm.git
 cd gwtm
 ./install.sh
 ```
