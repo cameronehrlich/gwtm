@@ -1,0 +1,18 @@
+# Git WorkTree Manager Configuration File
+# Copy this file to ~/.gwtmrc or .gwtmrc in your repo root
+
+[defaults]
+# Default IDE to use when opening a worktree without specifying an IDE
+ide = xcode
+
+# Default location for worktrees (relative to repository root)
+worktree_location = .gwtm/worktrees
+
+[paths]
+# Paths to IDE applications
+xcode = /Applications/Xcode.app
+androidstudio = /Applications/Android Studio.app
+
+# Add your own custom IDEs here
+# vscode = /Applications/Visual Studio Code.app
+# intellij = /Applications/IntelliJ IDEA.app
