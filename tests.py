@@ -3,6 +3,11 @@
 """
 Comprehensive test script for GWTM.
 This will test the core functionality and clean up any test repositories created.
+
+Usage:
+  python tests.py           # Run all tests
+  python tests.py basic     # Run only basic tests
+  python tests.py full      # Run comprehensive tests
 """
 
 import os
@@ -187,8 +192,33 @@ vscode = /Applications/VSCode-test.app
     print("Configuration handling tests passed.")
     print("-" * 50)
 
-def main():
-    """Run all tests."""
+def run_basic_tests():
+    """Run basic command-line tests."""
+    print("Running basic tests for GWTM - Git WorkTree Manager")
+    print("=" * 70)
+    
+    # Test help command
+    run_command("python src/main.py --help")
+    
+    # Test list command (should fail if not in a git repo)
+    run_command("python src/main.py list")
+    
+    # Create a test git repo if we're not in one
+    if not os.path.exists(".git"):
+        print("Creating a test git repository...")
+        run_command("git init")
+        run_command("touch test-file.txt")
+        run_command("git add test-file.txt")
+        run_command("git commit -m 'Initial commit'")
+    
+    # Now test list command again
+    run_command("python src/main.py list")
+    
+    print("Basic tests completed.")
+    return 0
+
+def run_comprehensive_tests():
+    """Run all tests including unit tests."""
     print("Running comprehensive tests for GWTM - Git WorkTree Manager")
     print("=" * 70)
     
@@ -211,7 +241,7 @@ def main():
         test_new_branch_creation(test_repo_dir)
         
         print("=" * 70)
-        print("All tests passed successfully!")
+        print("All comprehensive tests passed successfully!")
         
     except AssertionError as e:
         print(f"Test failed: {e}")
@@ -225,6 +255,24 @@ def main():
             cleanup_test_repo(test_repo_dir)
     
     return 0
+
+def main():
+    """Determine which tests to run based on arguments."""
+    if len(sys.argv) > 1:
+        # Get the test type from command line arguments
+        test_type = sys.argv[1].lower()
+        
+        if test_type == "basic":
+            return run_basic_tests()
+        elif test_type == "full" or test_type == "comprehensive":
+            return run_comprehensive_tests()
+        else:
+            print(f"Unknown test type: {test_type}")
+            print("Available options: basic, full")
+            return 1
+    else:
+        # Default to comprehensive tests
+        return run_comprehensive_tests()
 
 if __name__ == "__main__":
     sys.exit(main())
